@@ -102,7 +102,7 @@ class _SignState extends State<Sign> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
-            TextField(
+            TextField(obscureText: true,
               controller: confirmpasswordcontoller,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
