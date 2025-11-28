@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:regestration_app_flutter/Forgot%20Password.dart';
 import 'package:regestration_app_flutter/sign%20up.dart';
 
 class Loggin extends StatelessWidget {
@@ -66,7 +67,19 @@ class Loggin extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: GestureDetector(onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>Forgot() ,));
+                },
+                  child: Text(
+                    "Forgot passsword",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              SizedBox(height: 40),
               SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -79,28 +92,38 @@ class Loggin extends StatelessWidget {
                   child: Text("Login"),
                 ),
               ),
-          SizedBox(height: 20,)
-,              Row(mainAxisAlignment: MainAxisAlignment.center,
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Don't have an account?",
-                    style: TextStyle(color: Colors.black, fontSize: 15),
-                  ),SizedBox(width: 5,),
-                  GestureDetector(onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder:(context) => Sign(),));
-                  },child: 
-               
-                  Text(
-                    "Sign Up",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     ),
-                  ),),SizedBox(height: 10,),
-                 
+                  ),
+                  SizedBox(width: 5),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Sign()),
+                      );
+                    },
+                    child: Text(
+                      "Sign Up",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
                 ],
-              ), Image.asset("assets/brlnt.png"),
+              ),
+              Image.asset("assets/brlnt.png"),
             ],
           ),
         ),
