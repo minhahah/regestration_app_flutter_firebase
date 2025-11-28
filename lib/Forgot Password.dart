@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:regestration_app_flutter/Service.dart';
 import 'package:regestration_app_flutter/loggin.dart';
 
-class Forgot extends StatelessWidget {
+class Forgot extends StatefulWidget {
   const Forgot({super.key});
 
+  @override
+  State<Forgot> createState() => _ForgotState();
+}
+
+class _ForgotState extends State<Forgot> {
+  TextEditingController emailcontroller=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +38,7 @@ class Forgot extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              TextField(
+              TextField(controller: emailcontroller,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(4),
@@ -48,7 +55,7 @@ class Forgot extends StatelessWidget {
                 height: 50,
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {forgot(email: emailcontroller.text, context: context);},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     foregroundColor: Colors.white,side: BorderSide(color: Colors.black),

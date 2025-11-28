@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:regestration_app_flutter/Forgot%20Password.dart';
+import 'package:regestration_app_flutter/Service.dart';
 import 'package:regestration_app_flutter/sign%20up.dart';
 
-class Loggin extends StatelessWidget {
+class Loggin extends StatefulWidget {
   const Loggin({super.key});
 
+  @override
+  State<Loggin> createState() => _LogginState();
+}
+
+class _LogginState extends State<Loggin> {
+  TextEditingController emailcontroller=TextEditingController();
+  TextEditingController passwordcontroller=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +43,7 @@ class Loggin extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              TextField(
+              TextField(controller: emailcontroller,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(4),
@@ -55,7 +63,7 @@ class Loggin extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              TextField(
+              TextField(controller: passwordcontroller,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(4),
@@ -84,7 +92,7 @@ class Loggin extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {login(email: emailcontroller.text, password: passwordcontroller.text, context: context);},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white,

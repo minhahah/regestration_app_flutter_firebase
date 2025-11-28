@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:regestration_app_flutter/Service.dart';
 import 'package:regestration_app_flutter/loggin.dart';
 
-class Sign extends StatelessWidget {
+class Sign extends StatefulWidget {
   const Sign({super.key});
 
+  @override
+  State<Sign> createState() => _SignState();
+}
+
+class _SignState extends State<Sign> {
+  TextEditingController usernamecontroller = TextEditingController();
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+  TextEditingController confirmpasswordcontoller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(left: 10,right: 10),
+        padding: const EdgeInsets.only(left: 10, right: 10),
         child: Column(
           children: [
             SizedBox(height: 60),
@@ -26,7 +36,7 @@ class Sign extends StatelessWidget {
             Center(
               child: Text(
                 "Create an account,It's a free",
-                style: TextStyle(color: Colors.black, fontSize: 20,),
+                style: TextStyle(color: Colors.black, fontSize: 20),
               ),
             ),
             SizedBox(height: 60),
@@ -42,6 +52,7 @@ class Sign extends StatelessWidget {
               ],
             ),
             TextField(
+              controller: usernamecontroller,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(4),
@@ -52,9 +63,13 @@ class Sign extends StatelessWidget {
             SizedBox(height: 10),
             Align(
               alignment: Alignment.topLeft,
-              child: Text("Email", style: TextStyle(fontWeight: FontWeight.bold)),
+              child: Text(
+                "Email",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
             TextField(
+              controller: emailcontroller,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(4),
@@ -71,6 +86,7 @@ class Sign extends StatelessWidget {
               ),
             ),
             TextField(
+              controller: passwordcontroller,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(4),
@@ -87,6 +103,7 @@ class Sign extends StatelessWidget {
               ),
             ),
             TextField(
+              controller: confirmpasswordcontoller,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(4),
@@ -99,7 +116,15 @@ class Sign extends StatelessWidget {
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  register(
+                    username: usernamecontroller.text,
+                    email: emailcontroller.text,
+                    password: passwordcontroller.text,
+                    confirmpassword: confirmpasswordcontoller.text,
+                    context: context,
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
                   foregroundColor: Colors.white,
@@ -117,12 +142,25 @@ class Sign extends StatelessWidget {
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
-                ),SizedBox(width: 5,),
-                GestureDetector(onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Loggin(),));
-                },child: 
-                Text("Login",style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),)
-                 ),     ],
+                ),
+                SizedBox(width: 5),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Loggin()),
+                    );
+                  },
+                  child: Text(
+                    "Login",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
